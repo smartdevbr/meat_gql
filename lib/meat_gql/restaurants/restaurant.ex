@@ -19,5 +19,4 @@ defmodule MeatGql.Restaurants.Restaurant do
     |> cast(params, [:image, :name, :description])
     |> validate_required([:image, :name, :description], message: "You have to fill this field")
   end
-  
 end
