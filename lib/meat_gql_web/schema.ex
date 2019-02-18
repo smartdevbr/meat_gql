@@ -18,6 +18,19 @@ defmodule MeatGqlWeb.Schema do
       arg(:input, non_null(:restaurant_input_type))
       resolve(&Resolver.RestaurantResolver.create_restaurant/3)
     end
+
+    @desc "update a Restaurant"
+    field :update_restaurant, type: :restaurant_type do
+      arg(:id, non_null(:id))
+      arg(:input, non_null(:restaurant_input_type))
+      resolve(&Resolver.RestaurantResolver.update_restaurant/2)
+    end
+
+    @desc "delete a Restaurant"
+    field :delete_restaurant, type: :restaurant_type do
+      arg(:id, non_null(:id))
+      resolve(&Resolver.RestaurantResolver.delete_restaurant/2)
+    end
   end
 
   # subscription do
