@@ -1,6 +1,6 @@
 defmodule MeatGqlWeb.Schema.Types do
-    use Absinthe.Schema.Notation
-    alias MeatGqlWeb.Schema.Types
+  use Absinthe.Schema.Notation
+  alias MeatGqlWeb.Schema.Types
 
-    import_types(Types.RestaurantType)
+  import_types(Types.RestaurantType)
 end
