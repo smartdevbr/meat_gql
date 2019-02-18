@@ -58,7 +58,7 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :meat_gql, MeatGql.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   database: "meat_gql_dev",
   hostname: "localhost",
   pool_size: 10
