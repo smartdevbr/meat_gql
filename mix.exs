@@ -40,6 +40,7 @@ defmodule MeatGql.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
+      {:absinthe, "~> 1.4"},
       {:absinthe_ecto, "~> 0.1.0"},
       {:absinthe_plug, "~> 1.3.0"},
       {:comeonin, "~> 4.1"},
