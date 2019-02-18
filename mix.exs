@@ -47,6 +47,8 @@ defmodule MeatGql.MixProject do
       {:argon2_elixir, "~> 1.3"},
       {:elixir_make, "~> 0.4.2"},
       {:guardian, "~> 1.0"},
+      {:arc, "~> 0.11.0"},
+      {:arc_ecto, "~> 0.11.1"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end
