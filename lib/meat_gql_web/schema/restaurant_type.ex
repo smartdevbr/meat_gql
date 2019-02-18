@@ -3,7 +3,7 @@ defmodule MeatGqlWeb.Schema.Types.RestaurantType do
   use Absinthe.Ecto, repo: MeatGql.Repo
 
   object :restaurant_type do
-    field :id, :uuid
+    field :id, :string
     field :name, :string
     field :description, :string
     field :image, :string
