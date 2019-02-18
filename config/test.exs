@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :meat_gql, MeatGql.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   database: "meat_gql_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
