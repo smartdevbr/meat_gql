@@ -12,8 +12,9 @@ defmodule MeatGqlWeb.Resolver.RestaurantResolver do
   def restaurants(_, _, _), do: {:ok, Restaurants.list_restaurants()}
 
   def update_restaurant(%{id: id, input: input}, _info) do
-   restaurant =  Restaurants.get_restaurant!(id)
-   case Restaurants.update_restaurant(restaurant, input) do
+    restaurant = Restaurants.get_restaurant!(id)
+
+    case Restaurants.update_restaurant(restaurant, input) do
       {:ok, restaurant} -> {:ok, restaurant}
       {:error, _} -> {:error, "Failed to update restaurant"}
     end
@@ -21,6 +22,7 @@ defmodule MeatGqlWeb.Resolver.RestaurantResolver do
 
   def delete_restaurant(%{id: id}, _info) do
     restaurant_deleted = Restaurants.get_restaurant!(id)
+
     with {:ok, restaurant} <- Restaurants.delete_restaurant(restaurant_deleted) do
       {:ok, restaurant_deleted}
     else
