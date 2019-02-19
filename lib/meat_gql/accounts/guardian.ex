@@ -1,6 +1,6 @@
 defmodule MeatGql.Guardian do
   alias MeatGql.Accounts
-  use Guardian, otp_app: :medium_graphql_api
+  use Guardian, otp_app: :meat_gql
 
   # def subject_for_token(user, _claims) do
   def subject_for_token(%Accounts.User{} = user, _claims) do
@@ -10,8 +10,6 @@ defmodule MeatGql.Guardian do
     # A unique `id` is a good subject, a non-unique email address
     # is a poor subject.
     # sub = to_string(user.id)
-    IO.puts("============ subject for token =============")
-    IO.inspect(user)
     {:ok, to_string(user.id)}
   end
 
@@ -19,26 +17,25 @@ defmodule MeatGql.Guardian do
     {:error, :reason_for_error}
   end
 
-  def resource_from_claims(claims) do
-    #   def resource_from_claims(%{"sub" => id}) do
+  # def resource_from_claims(claims) do
+  def resource_from_claims(%{"sub" => id}) do
     # Here we'll look up our resource from the claims, the subject can be
     # found in the `"sub"` key. In `above subject_for_token/2` we returned
     # the resource id so here we'll rely on that to look it up.
 
-    IO.puts("============ subject for token =============")
-    IO.inspect(claims)
+    IO.puts("============ subject for token12 =============")
+    IO.inspect(id)
     #   id = claims["sub"]
     #   resource = MyApp.get_resource_by_id(id)
     #   {:ok,  resource}
-    user =
-      claims["sub"]
-      |> Accounts.get_user!()
+    # user =
+    #   claims["sub"]
+    #   |> Accounts.get_user!()
 
-    {:ok, user}
-    #   case Accounts.get_user!(id) do
-    #     nil -> {:error, :resource_not_found}
-    # user -> {:ok, user}
-    #   end
+    case Accounts.get_user!(id) do
+      nil -> {:error, :resource_not_found}
+      user -> {:ok, user}
+    end
   end
 
   def resource_from_claims(_claims) do

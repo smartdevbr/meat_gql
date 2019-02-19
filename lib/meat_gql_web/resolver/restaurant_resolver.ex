@@ -1,7 +1,7 @@
 defmodule MeatGqlWeb.Resolver.RestaurantResolver do
   alias MeatGql.Restaurants
 
-  def create_restaurant(parents, %{input: input}, _) do
+  def create_restaurant(_, %{input: input}, _) do
     with {:ok, restaurant} <- Restaurants.create_restaurant(input) do
       {:ok, restaurant}
     else
@@ -23,7 +23,7 @@ defmodule MeatGqlWeb.Resolver.RestaurantResolver do
   def delete_restaurant(%{id: id}, _info) do
     restaurant_deleted = Restaurants.get_restaurant!(id)
 
-    with {:ok, restaurant} <- Restaurants.delete_restaurant(restaurant_deleted) do
+    with {:ok, _restaurant} <- Restaurants.delete_restaurant(restaurant_deleted) do
       {:ok, restaurant_deleted}
     else
       {:error, _} -> {:error, "Failed to delete Restaurant"}

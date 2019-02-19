@@ -1,14 +1,10 @@
 defmodule MeatGqlWeb.Schema.MiddleWare.Authorize do
-  @beheaviour Absinthe.Middleware
+  @behaviour Absinthe.Middleware
 
   def call(resolution, role) do
-    IO.puts("===============midddleware authorize")
-    IO.inspect(resolution)
-    IO.inspect(role)
 
     with %{current_user: current_user} <- resolution.context,
-         true <- current_role?(current_user, role) do
-      IO.inspect(current_user)
+         true <- correct_role?(current_user, role) do
       resolution
     else
       _ ->
@@ -17,8 +13,8 @@ defmodule MeatGqlWeb.Schema.MiddleWare.Authorize do
     end
   end
 
-  defp current_role?(%{}, :any), do: true
-  defp current_role?(%{role: role}, :role), do: true
-  # defp correct_role?(%{role: role}, role), do: true
+  defp correct_role?(%{}, :any), do: true
+  # defp correct_role?(%{role: role}, :role), do: true
+  defp correct_role?(%{role: role}, role), do: true
   defp correct_role?(_, _), do: false
 end

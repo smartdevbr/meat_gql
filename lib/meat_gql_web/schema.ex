@@ -8,7 +8,7 @@ defmodule MeatGqlWeb.Schema do
   query do
     @desc "Get a list of all restaurants"
     field :restaurants, list_of(:restaurant_type) do
-      middleware(MiddleWare.Authorize, :any)
+      # middleware(MiddleWare.Authorize, :any)
       resolve(&Resolver.RestaurantResolver.restaurants/3)
     end
 
@@ -35,7 +35,7 @@ defmodule MeatGqlWeb.Schema do
     @desc "Create a Restaurant"
     field :create_restaurant, type: :restaurant_type do
       arg(:input, non_null(:restaurant_input_type))
-      middleware(MiddleWare.Authorize, :admin)
+      middleware(MiddleWare.Authorize, "admin")
       resolve(&Resolver.RestaurantResolver.create_restaurant/3)
     end
 

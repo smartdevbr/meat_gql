@@ -22,6 +22,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+  #Guardian config details
+  #"Secret key. You can use `mix guardian.gen.secret` to get one"
+config :meat_gql, MeatGql.Guardian,
+  issuer: "meat_gql",
+  secret_key: "aPxxZCe5tiD1QX+1S6fhuaZ095cj1DvHShtte0jHLbMZqUj7V42jsYz3LCHAF3MY"
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
