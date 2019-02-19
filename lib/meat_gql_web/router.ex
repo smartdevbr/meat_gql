@@ -3,6 +3,7 @@ defmodule MeatGqlWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug(MeatGqlWeb.Plugs.Context)
   end
 
   # scope "/api", MeatGqlWeb do
