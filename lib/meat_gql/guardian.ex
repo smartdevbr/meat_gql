@@ -1,4 +1,4 @@
-defmodule MeatGql.Accounts.Guardian do
+defmodule MeatGql.Guardian do
   alias MeatGql.Accounts
   use Guardian, otp_app: :medium_graphql_api
 
